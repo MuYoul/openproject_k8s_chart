@@ -1,0 +1,27 @@
+# Source: jenkins/templates/jenkins-controller-ingress.yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: openproject
+  # labels:
+  #   "app.kubernetes.io/name": 'openproject'
+  #   "app.kubernetes.io/instance": "openproject"
+  #   "app.kubernetes.io/component": "openproject-web"
+  annotations:
+    # alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:583642261810:certificate/f309f3ee-ac6e-4ac2-8b5f-4c3a807ead67
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    # alb.ingress.kubernetes.io/scheme: internet-facing
+    # alb.ingress.kubernetes.io/success-code: 200,302
+    # alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=600
+    # alb.ingress.kubernetes.io/target-type: ip
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  name: openproject
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: web
+          servicePort: 80
+    host: "openproject.devops.11stdev.io"

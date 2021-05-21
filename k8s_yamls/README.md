@@ -1,10 +1,13 @@
 install:
+
     ./install.sh
 
 uinstall:
+
     ./uninstall.sh
 
 port-forward :
+
     kubectl port-forward --address 0.0.0.0 --namespace openproject svc/web 20080:8080
     kubectl port-forward --address 0.0.0.0 --namespace openproject svc/proxy 20080:8080
 

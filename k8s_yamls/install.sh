@@ -14,3 +14,4 @@ kubectl apply -f seeder-pod.yaml
 kubectl apply -f web-deployment.yaml
 kubectl apply -f web-service.yaml
 kubectl apply -f worker-deployment.yaml
+kubectl apply -f ingress.yaml
